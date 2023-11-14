@@ -35,53 +35,55 @@
     </div>
 </template>
 <script>
+
 export default {
   name: "Calculate",
+
   data() {
     return {
-        getOperation: '',
-        getResult: '0',
+      getOperation: "",
+      getResult: "0",
     };
   },
 
   methods: {
-
     acClicked() {
-        this.getResult = '0';
+      this.getResult = "0";
     },
 
     delClicked() {
-        if (this.getResult.length > 1){
-            this.getResult = this.getResult.substring(0 , this.getResult.length - 1); 
-        } else {
-            this.getResult = '0';
-        }
+      if (this.getResult.length > 1) {
+        this.getResult = this.getResult.substring(0, this.getResult.length - 1);
+      } else {
+        this.getResult = "0";
+      }
     },
 
     charClicked(n) {
-        if (this.getResult == '0') {
-            this.getResult = n;
-        } else {
-            this.getResult += n;
-        }
+      if (this.getResult == "0" && n == "÷" ) {
+        alert("No puedes dividir entre 0");
+        this.getResult = "SyntaxERROR";
+      } else if (this.getResult == "0") {
+        this.getResult = n;
+      } else {
+        this.getResult += n;
+      }
     },
 
-    resultClicked(){
-        let operation = this.getResult;
-        this.getOperation = operation;
+    resultClicked() {
+      let operation = this.getResult;
+      this.getOperation = operation;
 
-        operation = operation.replace('×' , '*');
-        operation = operation.replace('÷' , '/');
-        
-        this.getResult = eval(operation);
-    }
-  }
+      operation = operation.replace("×", "*");
+      operation = operation.replace("÷", "/");
+
+      this.getResult = eval(operation);
+    },
+  },
 };
 </script>
 <style scoped >
-
-   button{
-    border: 1px solid;
-   }
-
+button {
+  border: 1px solid;
+}
 </style>
