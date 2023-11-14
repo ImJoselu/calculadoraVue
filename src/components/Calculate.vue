@@ -62,7 +62,7 @@ export default {
     charClicked(n) {
       if (this.getResult == "0" && n == "÷" ) {
         alert("No puedes dividir entre 0");
-        this.getResult = "SyntaxERROR";
+        this.getOperation = "SyntaxERROR";
       } else if (this.getResult == "0") {
         this.getResult = n;
       } else {
